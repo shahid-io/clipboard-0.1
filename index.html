@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+    <title>copy clipboard</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>clipboard</h1>
+      <textarea
+        name=""
+        id="textField"
+        class="text-field"
+        cols="30"
+        rows="10"
+      ></textarea>
+
+      <button class="copy-btn">Copy</button>
+      <button class="clr-btn" id="clr">Clear</button>
+    </div>
+    <script>
+      $(document).ready(function () {
+        function add() {
+          $(".copied").addClass("bounce-effect");
+        }
+        function remove() {
+          $(".copied").removeClass("bounce-effect");
+        }
+
+        $(".copy-btn").click(function () {
+          $("#textField").select();
+          document.execCommand("copy");
+          add();
+          setTimeout(remove, 800);
+        });
+
+        $("#clr").click(function () {
+          $("#textField").val("");
+        });
+      });
+    </script>
+
+    <!-- <script src="./script"></script> -->
+  </body>
+</html>
